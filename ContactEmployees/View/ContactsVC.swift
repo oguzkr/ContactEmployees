@@ -10,9 +10,11 @@ import UIKit
 class ContactsVC: UIViewController {
 
     let apiClient: ApiClient = ApiClient()
+    let refreshControl = UIRefreshControl()
+
     var employees = [Employee]()
     var selectedEmployee : Employee?
-    
+
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
@@ -26,10 +28,12 @@ class ContactsVC: UIViewController {
             if success {
                 self.employees = self.apiClient.employees
                 self.employees.append(contentsOf: self.apiClient.employees)
+                self.employees.sort(by: { $0.lname.lowercased() < $1.lname.lowercased() })
                 self.configureTableView()
             } else {
-                //error
+                self.showAlert(message: "Task failed successfully")
             }
+            self.refreshControl.endRefreshing()
         }
     }
     
@@ -37,17 +41,27 @@ class ContactsVC: UIViewController {
         apiClient.getEmployees(branch: .tallinn) { success in
             if success {
                 self.employees.append(contentsOf: self.apiClient.employees)
+                self.employees.sort(by: { $0.lname.lowercased() < $1.lname.lowercased() })
                 self.configureTableView()
             } else {
-                //error
+                self.showAlert(message: "Task failed successfully")
             }
+            self.refreshControl.endRefreshing()
         }
     }
     
     func configureTableView(){
         tableView.register(UINib(nibName: EmployeeTVCell.reuseID, bundle: nil), forCellReuseIdentifier: Identifiers.employeeCell)
-         tableView.reloadData()
+        refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+           refreshControl.addTarget(self, action: #selector(self.refreshData(_:)), for: .valueChanged)
+        tableView.addSubview(refreshControl)
+        tableView.reloadData()
      }
+    
+    @objc func refreshData(_ sender: AnyObject) {
+        getEmployeesFromTartu()
+        getEmployeesFromTallinn()
+    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == Identifiers.employeeDetailSegueId
@@ -55,6 +69,12 @@ class ContactsVC: UIViewController {
             let contactDetailVC = segue.destination as! ContactDetailVC
             contactDetailVC.employee = selectedEmployee
         }
+    }
+    
+    func showAlert(message: String){
+        let alert = UIAlertController(title: "Alert", message: message, preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
 }
 
@@ -88,5 +108,4 @@ extension ContactsVC: UITableViewDelegate, UITableViewDataSource {
     }
 
 }
-
 
