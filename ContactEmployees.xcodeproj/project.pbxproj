@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		1D368888273AA8340013E4C9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D368887273AA8340013E4C9 /* AppDelegate.swift */; };
 		1D36888A273AA8340013E4C9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D368889273AA8340013E4C9 /* SceneDelegate.swift */; };
-		1D36888C273AA8340013E4C9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D36888B273AA8340013E4C9 /* ViewController.swift */; };
+		1D36888C273AA8340013E4C9 /* ContactsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D36888B273AA8340013E4C9 /* ContactsVC.swift */; };
 		1D36888F273AA8340013E4C9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1D36888D273AA8340013E4C9 /* Main.storyboard */; };
 		1D368891273AA8350013E4C9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1D368890273AA8350013E4C9 /* Assets.xcassets */; };
 		1D368894273AA8350013E4C9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1D368892273AA8350013E4C9 /* LaunchScreen.storyboard */; };
@@ -39,7 +39,7 @@
 		1D368884273AA8340013E4C9 /* ContactEmployees.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ContactEmployees.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1D368887273AA8340013E4C9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1D368889273AA8340013E4C9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		1D36888B273AA8340013E4C9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		1D36888B273AA8340013E4C9 /* ContactsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsVC.swift; sourceTree = "<group>"; };
 		1D36888E273AA8340013E4C9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1D368890273AA8350013E4C9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1D368893273AA8350013E4C9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -99,13 +99,12 @@
 		1D368886273AA8340013E4C9 /* ContactEmployees */ = {
 			isa = PBXGroup;
 			children = (
-				1D368887273AA8340013E4C9 /* AppDelegate.swift */,
-				1D368889273AA8340013E4C9 /* SceneDelegate.swift */,
-				1D36888B273AA8340013E4C9 /* ViewController.swift */,
-				1D36888D273AA8340013E4C9 /* Main.storyboard */,
-				1D368890273AA8350013E4C9 /* Assets.xcassets */,
-				1D368892273AA8350013E4C9 /* LaunchScreen.storyboard */,
-				1D368895273AA8350013E4C9 /* Info.plist */,
+				1D3688BB273AA9F60013E4C9 /* Application */,
+				1D3688B8273AA89F0013E4C9 /* Resources */,
+				1D3688BA273AA8C70013E4C9 /* Network */,
+				1D3688B7273AA8500013E4C9 /* Models */,
+				1D3688BC273AAA190013E4C9 /* View */,
+				1D36888B273AA8340013E4C9 /* ContactsVC.swift */,
 			);
 			path = ContactEmployees;
 			sourceTree = "<group>";
@@ -125,6 +124,55 @@
 				1D3688AA273AA8350013E4C9 /* ContactEmployeesUITestsLaunchTests.swift */,
 			);
 			path = ContactEmployeesUITests;
+			sourceTree = "<group>";
+		};
+		1D3688B7273AA8500013E4C9 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		1D3688B8273AA89F0013E4C9 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				1D3688B9273AA8B80013E4C9 /* Storyboards */,
+				1D368892273AA8350013E4C9 /* LaunchScreen.storyboard */,
+				1D368890273AA8350013E4C9 /* Assets.xcassets */,
+				1D368895273AA8350013E4C9 /* Info.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		1D3688B9273AA8B80013E4C9 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				1D36888D273AA8340013E4C9 /* Main.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		1D3688BA273AA8C70013E4C9 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		1D3688BB273AA9F60013E4C9 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				1D368887273AA8340013E4C9 /* AppDelegate.swift */,
+				1D368889273AA8340013E4C9 /* SceneDelegate.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		1D3688BC273AAA190013E4C9 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -258,7 +306,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1D36888C273AA8340013E4C9 /* ViewController.swift in Sources */,
+				1D36888C273AA8340013E4C9 /* ContactsVC.swift in Sources */,
 				1D368888273AA8340013E4C9 /* AppDelegate.swift in Sources */,
 				1D36888A273AA8340013E4C9 /* SceneDelegate.swift in Sources */,
 			);
@@ -441,7 +489,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = QC54JWS8ZR;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = ContactEmployees/Info.plist;
+				INFOPLIST_FILE = ContactEmployees/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -456,7 +504,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -469,7 +517,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = QC54JWS8ZR;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = ContactEmployees/Info.plist;
+				INFOPLIST_FILE = ContactEmployees/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -484,7 +532,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
