@@ -23,7 +23,9 @@
 		1D3688C8273AC1370013E4C9 /* EmployeeTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D3688C6273AC1370013E4C9 /* EmployeeTVCell.xib */; };
 		1D3688CB273AC53F0013E4C9 /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3688CA273AC53E0013E4C9 /* Reusable.swift */; };
 		1D3688CD273AC5870013E4C9 /* Identifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3688CC273AC5870013E4C9 /* Identifiers.swift */; };
-		1D3688CF273AC83B0013E4C9 /* ContactDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3688CE273AC83B0013E4C9 /* ContactDetailVC.swift */; };
+		1D71EDA2273C517500D396AF /* ContactDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D71EDA1273C517500D396AF /* ContactDetailVC.swift */; };
+		1D71EDA5273C620F00D396AF /* ProjectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D71EDA3273C620F00D396AF /* ProjectCell.swift */; };
+		1D71EDA6273C620F00D396AF /* ProjectCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D71EDA4273C620F00D396AF /* ProjectCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,7 +66,9 @@
 		1D3688C6273AC1370013E4C9 /* EmployeeTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmployeeTVCell.xib; sourceTree = "<group>"; };
 		1D3688CA273AC53E0013E4C9 /* Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reusable.swift; sourceTree = "<group>"; };
 		1D3688CC273AC5870013E4C9 /* Identifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Identifiers.swift; sourceTree = "<group>"; };
-		1D3688CE273AC83B0013E4C9 /* ContactDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactDetailVC.swift; sourceTree = "<group>"; };
+		1D71EDA1273C517500D396AF /* ContactDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactDetailVC.swift; sourceTree = "<group>"; };
+		1D71EDA3273C620F00D396AF /* ProjectCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectCell.swift; sourceTree = "<group>"; };
+		1D71EDA4273C620F00D396AF /* ProjectCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProjectCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -192,7 +196,7 @@
 			children = (
 				1D3688C4273AC1140013E4C9 /* Cell */,
 				1D36888B273AA8340013E4C9 /* ContactsVC.swift */,
-				1D3688CE273AC83B0013E4C9 /* ContactDetailVC.swift */,
+				1D71EDA1273C517500D396AF /* ContactDetailVC.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -202,6 +206,8 @@
 			children = (
 				1D3688C5273AC1370013E4C9 /* EmployeeTVCell.swift */,
 				1D3688C6273AC1370013E4C9 /* EmployeeTVCell.xib */,
+				1D71EDA3273C620F00D396AF /* ProjectCell.swift */,
+				1D71EDA4273C620F00D396AF /* ProjectCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -322,6 +328,7 @@
 				1D368894273AA8350013E4C9 /* LaunchScreen.storyboard in Resources */,
 				1D3688C8273AC1370013E4C9 /* EmployeeTVCell.xib in Resources */,
 				1D368891273AA8350013E4C9 /* Assets.xcassets in Resources */,
+				1D71EDA6273C620F00D396AF /* ProjectCell.xib in Resources */,
 				1D36888F273AA8340013E4C9 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -348,14 +355,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				1D36888C273AA8340013E4C9 /* ContactsVC.swift in Sources */,
+				1D71EDA5273C620F00D396AF /* ProjectCell.swift in Sources */,
 				1D3688BE273AADE30013E4C9 /* Employee.swift in Sources */,
+				1D71EDA2273C517500D396AF /* ContactDetailVC.swift in Sources */,
 				1D3688C7273AC1370013E4C9 /* EmployeeTVCell.swift in Sources */,
 				1D368888273AA8340013E4C9 /* AppDelegate.swift in Sources */,
 				1D3688CD273AC5870013E4C9 /* Identifiers.swift in Sources */,
 				1D3688CB273AC53F0013E4C9 /* Reusable.swift in Sources */,
 				1D36888A273AA8340013E4C9 /* SceneDelegate.swift in Sources */,
 				1D3688C3273AB3650013E4C9 /* ServiceType.swift in Sources */,
-				1D3688CF273AC83B0013E4C9 /* ContactDetailVC.swift in Sources */,
 				1D3688C0273AAF950013E4C9 /* ApiClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

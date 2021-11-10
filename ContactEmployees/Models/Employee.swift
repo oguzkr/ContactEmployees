@@ -13,7 +13,7 @@ struct EmployeeModel:Decodable {
 
 struct Employee:Decodable {
     var fname, lname, position: String
-    var contactDetails: ContactDetails?
+    var contact_details: ContactDetails?
     var projects: [String]?
 }
 

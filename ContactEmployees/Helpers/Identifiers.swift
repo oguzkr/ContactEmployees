@@ -10,4 +10,5 @@ import Foundation
 struct Identifiers {
     static let employeeCell = "employeeCell"
     static let employeeDetailSegueId = "contactDetail"
+    static let projectCell = "projectCell"
 }
