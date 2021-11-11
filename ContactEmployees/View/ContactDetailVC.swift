@@ -15,11 +15,12 @@ class ContactDetailVC: UITableViewController {
     @IBOutlet weak var labelEmail: UILabel!
     @IBOutlet weak var labelPhone: UILabel!
     
+    @IBOutlet weak var labelProjects: UILabel!
+    
     var employee : Employee?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureTableView()
         bindEmployeeData()
     }
     
@@ -32,25 +33,13 @@ class ContactDetailVC: UITableViewController {
             selectedEmployee.contact_details?.phone == nil ? (labelPhone.isHidden = true) : (labelPhone.text = selectedEmployee.contact_details?.phone)
             
             labelEmail.text = selectedEmployee.contact_details?.email
-        }
-    }
-    
-    func configureTableView(){
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: Identifiers.projectCell)
-    }
-
-    //MARK: TablView Methods
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.section == 3 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: Identifiers.projectCell)!
-            if let employeeProjects = employee?.projects {
-                if employeeProjects.count > 0 {
-                    cell.textLabel?.text = employeeProjects[indexPath.row]
-                }
+            
+            if let projects = selectedEmployee.projects {
+                labelProjects.text = projects.joined(separator: ", ")
             }
         }
-        return super.tableView(tableView, cellForRowAt: indexPath)
     }
+
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if section == 3 && employee?.projects == nil{
@@ -58,15 +47,7 @@ class ContactDetailVC: UITableViewController {
         }
         return super.tableView(tableView, titleForHeaderInSection: section)
     }
-    
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if let employeeProjects = employee?.projects {
-            if section == 3 {
-                return employeeProjects.count
-            }
-        }
-        return super.tableView(tableView, numberOfRowsInSection: section)
-    }
+
 
 
 

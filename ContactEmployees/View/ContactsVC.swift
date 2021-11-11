@@ -55,6 +55,7 @@ class ContactsVC: UIViewController {
         refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
            refreshControl.addTarget(self, action: #selector(self.refreshData(_:)), for: .valueChanged)
         tableView.addSubview(refreshControl)
+        removeDuplicates()
         tableView.reloadData()
      }
     
@@ -76,6 +77,11 @@ class ContactsVC: UIViewController {
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }
+    
+    func removeDuplicates(){
+        let removedDuplicateEmployees =  employees.uniques(by: \.fname, \.lname)
+        employees = removedDuplicateEmployees
+    }
 }
 
 
@@ -89,10 +95,10 @@ extension ContactsVC: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: Identifiers.employeeCell, for: indexPath) as! EmployeeTVCell
         
         let fullName = "\(employees[indexPath.row].fname) \(employees[indexPath.row].lname)"
-        let position = employees[indexPath.row].position
+        let email = employees[indexPath.row].contact_details?.email
         
         cell.labelFullName.text = fullName
-        cell.labelPosition.text = position
+        cell.labelPosition.text = email
         
         return cell
     }
@@ -108,4 +114,3 @@ extension ContactsVC: UITableViewDelegate, UITableViewDataSource {
     }
 
 }
-

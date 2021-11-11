@@ -24,6 +24,7 @@
 		1D3688CB273AC53F0013E4C9 /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3688CA273AC53E0013E4C9 /* Reusable.swift */; };
 		1D3688CD273AC5870013E4C9 /* Identifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3688CC273AC5870013E4C9 /* Identifiers.swift */; };
 		1D71EDA2273C517500D396AF /* ContactDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D71EDA1273C517500D396AF /* ContactDetailVC.swift */; };
+		1DBDB609273D6A0600822898 /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DBDB608273D6A0600822898 /* ArrayExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,7 @@
 		1D3688CA273AC53E0013E4C9 /* Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reusable.swift; sourceTree = "<group>"; };
 		1D3688CC273AC5870013E4C9 /* Identifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Identifiers.swift; sourceTree = "<group>"; };
 		1D71EDA1273C517500D396AF /* ContactDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactDetailVC.swift; sourceTree = "<group>"; };
+		1DBDB608273D6A0600822898 /* ArrayExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -209,10 +211,19 @@
 		1D3688C9273AC5290013E4C9 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				1DBDB607273D69F600822898 /* Extension */,
 				1D3688CA273AC53E0013E4C9 /* Reusable.swift */,
 				1D3688CC273AC5870013E4C9 /* Identifiers.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		1DBDB607273D69F600822898 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				1DBDB608273D6A0600822898 /* ArrayExtension.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -357,6 +368,7 @@
 				1D36888A273AA8340013E4C9 /* SceneDelegate.swift in Sources */,
 				1D3688C3273AB3650013E4C9 /* ServiceType.swift in Sources */,
 				1D3688C0273AAF950013E4C9 /* ApiClient.swift in Sources */,
+				1DBDB609273D6A0600822898 /* ArrayExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
