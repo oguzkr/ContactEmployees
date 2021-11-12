@@ -17,6 +17,7 @@ class ContactsVC: UIViewController, CNContactViewControllerDelegate {
     var employees = [Employee]()
     var selectedEmployee : Employee?
     var employeePositions = [String]()
+    var loader = SpinnerView()
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -24,7 +25,7 @@ class ContactsVC: UIViewController, CNContactViewControllerDelegate {
         super.viewDidLoad()
         getEmployeesFromTartu()
         checkContactPermission()
-        
+        showLoader()
     }
     
     func getContacts(){
@@ -87,6 +88,15 @@ class ContactsVC: UIViewController, CNContactViewControllerDelegate {
         }
     }
     
+    func showLoader() {
+        loader = SpinnerView(frame: CGRect(x: view.frame.width / 2 - 50, y: view.frame.height / 2 - 50, width:100, height: 100))
+        self.view.addSubview(loader)
+    }
+    
+    func hideLoader() {
+        loader.removeFromSuperview()
+    }
+    
     func getEmployeesFromTallinn(){
         viewModel.getEmployees(branch: .tallinn) { success in
             if success {
@@ -96,6 +106,7 @@ class ContactsVC: UIViewController, CNContactViewControllerDelegate {
                 self.showAlert(message: "Task failed successfully")
             }
             self.refreshControl.endRefreshing()
+            self.hideLoader()
         }
     }
     

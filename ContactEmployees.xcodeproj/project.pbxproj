@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1D026BB8273E7CFD00D9F9FF /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D026BB7273E7CFD00D9F9FF /* StringExtension.swift */; };
 		1D026BBA273EC18B00D9F9FF /* ContactHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D026BB9273EC18B00D9F9FF /* ContactHelper.swift */; };
+		1D026BBC273ED10A00D9F9FF /* SpinnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D026BBB273ED10A00D9F9FF /* SpinnerView.swift */; };
 		1D368888273AA8340013E4C9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D368887273AA8340013E4C9 /* AppDelegate.swift */; };
 		1D36888A273AA8340013E4C9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D368889273AA8340013E4C9 /* SceneDelegate.swift */; };
 		1D36888C273AA8340013E4C9 /* ContactsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D36888B273AA8340013E4C9 /* ContactsVC.swift */; };
@@ -49,6 +50,7 @@
 /* Begin PBXFileReference section */
 		1D026BB7273E7CFD00D9F9FF /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		1D026BB9273EC18B00D9F9FF /* ContactHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactHelper.swift; sourceTree = "<group>"; };
+		1D026BBB273ED10A00D9F9FF /* SpinnerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinnerView.swift; sourceTree = "<group>"; };
 		1D368884273AA8340013E4C9 /* ContactEmployees.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ContactEmployees.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1D368887273AA8340013E4C9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1D368889273AA8340013E4C9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -219,6 +221,7 @@
 				1D3688CA273AC53E0013E4C9 /* Reusable.swift */,
 				1D3688CC273AC5870013E4C9 /* Identifiers.swift */,
 				1D026BB9273EC18B00D9F9FF /* ContactHelper.swift */,
+				1D026BBB273ED10A00D9F9FF /* SpinnerView.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -370,6 +373,7 @@
 				1D3688C7273AC1370013E4C9 /* EmployeeTVCell.swift in Sources */,
 				1D368888273AA8340013E4C9 /* AppDelegate.swift in Sources */,
 				1D3688CD273AC5870013E4C9 /* Identifiers.swift in Sources */,
+				1D026BBC273ED10A00D9F9FF /* SpinnerView.swift in Sources */,
 				1D3688CB273AC53F0013E4C9 /* Reusable.swift in Sources */,
 				1D36888A273AA8340013E4C9 /* SceneDelegate.swift in Sources */,
 				1D026BBA273EC18B00D9F9FF /* ContactHelper.swift in Sources */,

@@ -37,7 +37,6 @@ class ContactDetailVC: UITableViewController {
     fileprivate func openContactCard(contact: CNContact) {
         self.contactViewController=CNContactViewController(for: contact)
         self.contactViewController!.allowsEditing=true
-        self.contactViewController!.modalPresentationStyle = .formSheet
         self.contactViewController!.isEditing=false
         self.contactViewController!.delegate=self
         let navigationController = UINavigationController(rootViewController: self.contactViewController!)
