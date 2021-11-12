@@ -11,24 +11,20 @@ import ContactsUI
 class ContactsVC: UIViewController, CNContactViewControllerDelegate {
 
     let viewModel: EmployeesViewModel = EmployeesViewModel()
+    let contactHelper = ContactHelper()
     let refreshControl = UIRefreshControl()
-
+    
     var employees = [Employee]()
     var selectedEmployee : Employee?
     var employeePositions = [String]()
-    var contacts = [CNContact]()
+    //var contacts = [CNContact]()
     
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         getEmployeesFromTartu()
-        requestAccess()
-        if CNContactStore.authorizationStatus(for: .contacts) == .authorized {
-            getContacts()
-        } else {
-            presentSettingsActionSheet()
-        }
+        checkContactPermission()
         
     }
     
@@ -40,11 +36,20 @@ class ContactsVC: UIViewController, CNContactViewControllerDelegate {
             do {
                 try contactStore.enumerateContacts(with: request) {
                     (contact, stop) in
-                    self.contacts.append(contact)
+                    self.contactHelper.contacts.append(contact)
                 }
             }
             catch {
                 print("unable to fetch contacts")
+        }
+    }
+    
+    func checkContactPermission(){
+        requestAccess()
+        if CNContactStore.authorizationStatus(for: .contacts) == .authorized {
+            getContacts()
+        } else {
+            presentSettingsActionSheet()
         }
     }
 
@@ -168,6 +173,13 @@ extension ContactsVC: UITableViewDelegate, UITableViewDataSource {
         let email = employees[index].contact_details?.email
         cell.labelFullName.text = fullName
         cell.labelPosition.text = email
+        
+        if contactHelper.getContactByName(firstName: employees[index].fname, lastName: employees[index].lname) == nil {
+            cell.imagePerson.isHidden = true
+        } else {
+            cell.imagePerson.isHidden = false
+        }
+        
         return cell
     }
     

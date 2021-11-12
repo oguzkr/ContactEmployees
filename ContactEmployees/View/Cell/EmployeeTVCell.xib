@@ -53,25 +53,40 @@
                             </stackView>
                         </subviews>
                     </stackView>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="AjF-3e-Tf8">
+                        <rect key="frame" x="285" y="16" width="30" height="29"/>
+                        <color key="tintColor" systemColor="tintColor"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="30" id="jqk-FA-imf"/>
+                            <constraint firstAttribute="width" constant="30" id="kyR-YV-pc9"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="WHj-Bz-UZU" secondAttribute="bottom" constant="10" id="9ex-St-FbQ"/>
                     <constraint firstItem="WHj-Bz-UZU" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="OpZ-kk-20m"/>
+                    <constraint firstAttribute="trailing" secondItem="AjF-3e-Tf8" secondAttribute="trailing" constant="5" id="Z03-mi-6FI"/>
                     <constraint firstItem="WHj-Bz-UZU" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="bOz-oZ-sBK"/>
+                    <constraint firstItem="AjF-3e-Tf8" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="fwc-8x-Pxr"/>
                     <constraint firstAttribute="trailing" secondItem="WHj-Bz-UZU" secondAttribute="trailing" constant="20" id="kae-em-JWS"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="imagePerson" destination="AjF-3e-Tf8" id="G09-Hy-gcL"/>
                 <outlet property="labelFullName" destination="HWZ-Cb-8dS" id="XRd-kd-NCI"/>
                 <outlet property="labelPosition" destination="LcC-iy-Fgh" id="8Kl-bS-lZh"/>
             </connections>
-            <point key="canvasLocation" x="137.68115942028987" y="139.62053571428569"/>
+            <point key="canvasLocation" x="137.68115942028987" y="138.95089285714286"/>
         </tableViewCell>
     </objects>
     <resources>
+        <image name="person.circle" catalog="system" width="128" height="121"/>
         <systemColor name="secondaryLabelColor">
             <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="tintColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

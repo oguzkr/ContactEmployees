@@ -18,18 +18,18 @@ class ContactDetailVC: UITableViewController {
     @IBOutlet weak var buttonPhone: UIButton!
     
     var employee : Employee?
-    var contacts = [CNContact]()
     var contactViewController:CNContactViewController?
-    
+    let contactHelper = ContactHelper()
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        getContacts()
+        contactHelper.getContacts()
         bindEmployeeData()
     }
     
     
     @IBAction func buttonPhone(_ sender: Any) {
-        if let contact = getContacByName(firstName: employee!.fname, lastName: employee!.lname) {
+        if let contact = contactHelper.getContactByName(firstName: employee!.fname, lastName: employee!.lname) {
             openContactCard(contact: contact)
         }
     }
@@ -44,74 +44,32 @@ class ContactDetailVC: UITableViewController {
         self.present(navigationController, animated: true)
         navigationController.delegate=self
     }
-    
-    func getContacByName(firstName: String, lastName: String) -> CNContact? {
-        var result: CNContact?
-         for contact in contacts {
-             if (!contact.givenName.isEmpty) {
-                 if contact.givenName == firstName && contact.familyName == lastName {
-                     result = contact
-                 }
-              }
-        }
-        return result
-    }
-    
-    
-    func getContacts(){
-        let contactStore = CNContactStore()
-        let keysToFetch: [Any] = [CNContactIdentifierKey, CNContactGivenNameKey, CNContactFamilyNameKey, CNContactPhoneNumbersKey, CNContactImageDataAvailableKey, CNContactImageDataKey, CNContactViewController.descriptorForRequiredKeys()]
-        let request = CNContactFetchRequest(keysToFetch: keysToFetch as! [CNKeyDescriptor])
-        request.sortOrder = CNContactSortOrder.givenName
-            do {
-                try contactStore.enumerateContacts(with: request) {
-                    (contact, stop) in
-                    self.contacts.append(contact)
-                }
-            }
-            catch {
-                print("unable to fetch contacts")
-        }
-    }
 
-    
     func bindEmployeeData(){
         if let selectedEmployee = employee {
-            labelFullName.text = "\(selectedEmployee.fname) \(selectedEmployee.lname)"
             
+            labelFullName.text = "\(selectedEmployee.fname) \(selectedEmployee.lname)"
             labelPosition.text = selectedEmployee.position
             labelPhone.text = selectedEmployee.contact_details?.phone
-            if selectedEmployee.contact_details?.phone == nil {
-                labelPhone.isHidden = true
-                buttonPhone.isHidden = true
-            } else {
-                if getContacByName(firstName: selectedEmployee.fname, lastName: selectedEmployee.lname) == nil {
-                    buttonPhone.isHidden = true
-                } else {
-                    buttonPhone.setTitle(selectedEmployee.contact_details?.phone, for: .normal)
-                    buttonPhone.isHidden = false
-                    labelPhone.isHidden = true
-                }
-            }
-                
-                
-            
             labelEmail.text = selectedEmployee.contact_details?.email
             
+            let contact = contactHelper.getContactByName(firstName: selectedEmployee.fname, lastName: selectedEmployee.lname)
+            
+            if contact == nil {
+                buttonPhone.isHidden = true
+            } else if selectedEmployee.contact_details?.phone == nil {
+                labelPhone.isHidden = true
+                buttonPhone.setTitle(contact?.phoneNumbers.first?.value.stringValue, for: .normal)
+            } else {
+                buttonPhone.setTitle(selectedEmployee.contact_details?.phone, for: .normal)
+                buttonPhone.isHidden = false
+                labelPhone.isHidden = true
+            }
+
             if let projects = selectedEmployee.projects {
                 labelProjects.text = projects.joined(separator: ", ")
             }
-            
-
         }
-    }
-
-    
-    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if section == 3 && employee?.projects == nil {
-            return ""
-        }
-        return super.tableView(tableView, titleForHeaderInSection: section)
     }
     
 }

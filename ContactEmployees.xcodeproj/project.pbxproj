@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1D026BB8273E7CFD00D9F9FF /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D026BB7273E7CFD00D9F9FF /* StringExtension.swift */; };
+		1D026BBA273EC18B00D9F9FF /* ContactHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D026BB9273EC18B00D9F9FF /* ContactHelper.swift */; };
 		1D368888273AA8340013E4C9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D368887273AA8340013E4C9 /* AppDelegate.swift */; };
 		1D36888A273AA8340013E4C9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D368889273AA8340013E4C9 /* SceneDelegate.swift */; };
 		1D36888C273AA8340013E4C9 /* ContactsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D36888B273AA8340013E4C9 /* ContactsVC.swift */; };
@@ -47,6 +48,7 @@
 
 /* Begin PBXFileReference section */
 		1D026BB7273E7CFD00D9F9FF /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
+		1D026BB9273EC18B00D9F9FF /* ContactHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactHelper.swift; sourceTree = "<group>"; };
 		1D368884273AA8340013E4C9 /* ContactEmployees.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ContactEmployees.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1D368887273AA8340013E4C9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1D368889273AA8340013E4C9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -121,9 +123,9 @@
 			children = (
 				1D3688BB273AA9F60013E4C9 /* Application */,
 				1D3688B8273AA89F0013E4C9 /* Resources */,
-				1D3688BA273AA8C70013E4C9 /* ViewModel */,
 				1D3688B7273AA8500013E4C9 /* Model */,
 				1D3688BC273AAA190013E4C9 /* View */,
+				1D3688BA273AA8C70013E4C9 /* ViewModel */,
 				1D3688C9273AC5290013E4C9 /* Helpers */,
 			);
 			path = ContactEmployees;
@@ -216,6 +218,7 @@
 				1DBDB607273D69F600822898 /* Extension */,
 				1D3688CA273AC53E0013E4C9 /* Reusable.swift */,
 				1D3688CC273AC5870013E4C9 /* Identifiers.swift */,
+				1D026BB9273EC18B00D9F9FF /* ContactHelper.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -369,6 +372,7 @@
 				1D3688CD273AC5870013E4C9 /* Identifiers.swift in Sources */,
 				1D3688CB273AC53F0013E4C9 /* Reusable.swift in Sources */,
 				1D36888A273AA8340013E4C9 /* SceneDelegate.swift in Sources */,
+				1D026BBA273EC18B00D9F9FF /* ContactHelper.swift in Sources */,
 				1D026BB8273E7CFD00D9F9FF /* StringExtension.swift in Sources */,
 				1D3688C3273AB3650013E4C9 /* ServiceType.swift in Sources */,
 				1D3688C0273AAF950013E4C9 /* EmployeesViewModel.swift in Sources */,

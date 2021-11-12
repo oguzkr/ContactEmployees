@@ -11,6 +11,7 @@ class EmployeeTVCell: UITableViewCell {
 
     @IBOutlet weak var labelFullName: UILabel!
     @IBOutlet weak var labelPosition: UILabel!
+    @IBOutlet weak var imagePerson: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
