@@ -17,7 +17,6 @@ class ContactsVC: UIViewController, CNContactViewControllerDelegate {
     var employees = [Employee]()
     var selectedEmployee : Employee?
     var employeePositions = [String]()
-    //var contacts = [CNContact]()
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -53,7 +52,6 @@ class ContactsVC: UIViewController, CNContactViewControllerDelegate {
         }
     }
 
-
     func requestAccess() {
         let store = CNContactStore()
         store.requestAccess(for: .contacts) { granted, error in
@@ -75,8 +73,6 @@ class ContactsVC: UIViewController, CNContactViewControllerDelegate {
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
         present(alert, animated: true)
     }
-    
-    
     
     func getEmployeesFromTartu(){
         viewModel.getEmployees(branch: .tartu) { success in
@@ -155,7 +151,6 @@ class ContactsVC: UIViewController, CNContactViewControllerDelegate {
         self.employees = sortedEmployees
     }
 
-    
 }
 
 
