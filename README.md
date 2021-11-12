@@ -13,4 +13,4 @@
 ##### -MVVM
 
 ## Libraries
-##### -No 3th party libraries in the project, Used URLSession as a network management
+##### -No 3th party libraries in the project, Used URLSession as network management
