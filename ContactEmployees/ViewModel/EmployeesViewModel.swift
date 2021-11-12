@@ -8,7 +8,7 @@
 import Foundation
 
 
-class ApiClient {
+class EmployeesViewModel {
     
     var employees = [Employee]()
     

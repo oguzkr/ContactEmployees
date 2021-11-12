@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1D026BB8273E7CFD00D9F9FF /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D026BB7273E7CFD00D9F9FF /* StringExtension.swift */; };
 		1D368888273AA8340013E4C9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D368887273AA8340013E4C9 /* AppDelegate.swift */; };
 		1D36888A273AA8340013E4C9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D368889273AA8340013E4C9 /* SceneDelegate.swift */; };
 		1D36888C273AA8340013E4C9 /* ContactsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D36888B273AA8340013E4C9 /* ContactsVC.swift */; };
@@ -17,7 +18,7 @@
 		1D3688A9273AA8350013E4C9 /* ContactEmployeesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3688A8273AA8350013E4C9 /* ContactEmployeesUITests.swift */; };
 		1D3688AB273AA8350013E4C9 /* ContactEmployeesUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3688AA273AA8350013E4C9 /* ContactEmployeesUITestsLaunchTests.swift */; };
 		1D3688BE273AADE30013E4C9 /* Employee.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3688BD273AADE30013E4C9 /* Employee.swift */; };
-		1D3688C0273AAF950013E4C9 /* ApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3688BF273AAF950013E4C9 /* ApiClient.swift */; };
+		1D3688C0273AAF950013E4C9 /* EmployeesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3688BF273AAF950013E4C9 /* EmployeesViewModel.swift */; };
 		1D3688C3273AB3650013E4C9 /* ServiceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3688C2273AB3650013E4C9 /* ServiceType.swift */; };
 		1D3688C7273AC1370013E4C9 /* EmployeeTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3688C5273AC1370013E4C9 /* EmployeeTVCell.swift */; };
 		1D3688C8273AC1370013E4C9 /* EmployeeTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D3688C6273AC1370013E4C9 /* EmployeeTVCell.xib */; };
@@ -45,6 +46,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1D026BB7273E7CFD00D9F9FF /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		1D368884273AA8340013E4C9 /* ContactEmployees.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ContactEmployees.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1D368887273AA8340013E4C9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1D368889273AA8340013E4C9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -59,7 +61,7 @@
 		1D3688A8273AA8350013E4C9 /* ContactEmployeesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactEmployeesUITests.swift; sourceTree = "<group>"; };
 		1D3688AA273AA8350013E4C9 /* ContactEmployeesUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactEmployeesUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		1D3688BD273AADE30013E4C9 /* Employee.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Employee.swift; sourceTree = "<group>"; };
-		1D3688BF273AAF950013E4C9 /* ApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiClient.swift; sourceTree = "<group>"; };
+		1D3688BF273AAF950013E4C9 /* EmployeesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeesViewModel.swift; sourceTree = "<group>"; };
 		1D3688C2273AB3650013E4C9 /* ServiceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceType.swift; sourceTree = "<group>"; };
 		1D3688C5273AC1370013E4C9 /* EmployeeTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeTVCell.swift; sourceTree = "<group>"; };
 		1D3688C6273AC1370013E4C9 /* EmployeeTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmployeeTVCell.xib; sourceTree = "<group>"; };
@@ -119,8 +121,8 @@
 			children = (
 				1D3688BB273AA9F60013E4C9 /* Application */,
 				1D3688B8273AA89F0013E4C9 /* Resources */,
-				1D3688BA273AA8C70013E4C9 /* Network */,
-				1D3688B7273AA8500013E4C9 /* Models */,
+				1D3688BA273AA8C70013E4C9 /* ViewModel */,
+				1D3688B7273AA8500013E4C9 /* Model */,
 				1D3688BC273AAA190013E4C9 /* View */,
 				1D3688C9273AC5290013E4C9 /* Helpers */,
 			);
@@ -144,12 +146,12 @@
 			path = ContactEmployeesUITests;
 			sourceTree = "<group>";
 		};
-		1D3688B7273AA8500013E4C9 /* Models */ = {
+		1D3688B7273AA8500013E4C9 /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				1D3688BD273AADE30013E4C9 /* Employee.swift */,
 			);
-			path = Models;
+			path = Model;
 			sourceTree = "<group>";
 		};
 		1D3688B8273AA89F0013E4C9 /* Resources */ = {
@@ -171,13 +173,13 @@
 			path = Storyboards;
 			sourceTree = "<group>";
 		};
-		1D3688BA273AA8C70013E4C9 /* Network */ = {
+		1D3688BA273AA8C70013E4C9 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				1D3688BF273AAF950013E4C9 /* ApiClient.swift */,
+				1D3688BF273AAF950013E4C9 /* EmployeesViewModel.swift */,
 				1D3688C2273AB3650013E4C9 /* ServiceType.swift */,
 			);
-			path = Network;
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		1D3688BB273AA9F60013E4C9 /* Application */ = {
@@ -222,6 +224,7 @@
 			isa = PBXGroup;
 			children = (
 				1DBDB608273D6A0600822898 /* ArrayExtension.swift */,
+				1D026BB7273E7CFD00D9F9FF /* StringExtension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -366,8 +369,9 @@
 				1D3688CD273AC5870013E4C9 /* Identifiers.swift in Sources */,
 				1D3688CB273AC53F0013E4C9 /* Reusable.swift in Sources */,
 				1D36888A273AA8340013E4C9 /* SceneDelegate.swift in Sources */,
+				1D026BB8273E7CFD00D9F9FF /* StringExtension.swift in Sources */,
 				1D3688C3273AB3650013E4C9 /* ServiceType.swift in Sources */,
-				1D3688C0273AAF950013E4C9 /* ApiClient.swift in Sources */,
+				1D3688C0273AAF950013E4C9 /* EmployeesViewModel.swift in Sources */,
 				1DBDB609273D6A0600822898 /* ArrayExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -6,30 +6,79 @@
 //
 
 import UIKit
+import ContactsUI
 
-class ContactsVC: UIViewController {
+class ContactsVC: UIViewController, CNContactViewControllerDelegate {
 
-    let apiClient: ApiClient = ApiClient()
+    let viewModel: EmployeesViewModel = EmployeesViewModel()
     let refreshControl = UIRefreshControl()
 
     var employees = [Employee]()
     var selectedEmployee : Employee?
-
+    var employeePositions = [String]()
+    var contacts = [CNContact]()
+    
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         getEmployeesFromTartu()
-        getEmployeesFromTallinn()
+        requestAccess()
+        if CNContactStore.authorizationStatus(for: .contacts) == .authorized {
+            getContacts()
+        } else {
+            presentSettingsActionSheet()
+        }
+        
     }
     
+    func getContacts(){
+        let contactStore = CNContactStore()
+        let keys = [CNContactGivenNameKey, CNContactFamilyNameKey, CNContactPhoneNumbersKey, CNContactImageDataAvailableKey, CNContactThumbnailImageDataKey]
+        let request = CNContactFetchRequest(keysToFetch: keys as [CNKeyDescriptor])
+        request.sortOrder = CNContactSortOrder.givenName
+            do {
+                try contactStore.enumerateContacts(with: request) {
+                    (contact, stop) in
+                    self.contacts.append(contact)
+                }
+            }
+            catch {
+                print("unable to fetch contacts")
+        }
+    }
+
+
+    func requestAccess() {
+        let store = CNContactStore()
+        store.requestAccess(for: .contacts) { granted, error in
+            guard granted else {
+                DispatchQueue.main.async {
+                   self.presentSettingsActionSheet()
+                }
+                return
+            }
+        }
+    }
+
+    func presentSettingsActionSheet() {
+        let alert = UIAlertController(title: "Permission to Contacts", message: "This app needs access to contacts in order to ...", preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: "Go to Settings", style: .default) { _ in
+            let url = URL(string: UIApplication.openSettingsURLString)!
+            UIApplication.shared.open(url)
+        })
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        present(alert, animated: true)
+    }
+    
+    
+    
     func getEmployeesFromTartu(){
-        apiClient.getEmployees(branch: .tartu) { success in
+        viewModel.getEmployees(branch: .tartu) { success in
             if success {
-                self.employees = self.apiClient.employees
-                self.employees.append(contentsOf: self.apiClient.employees)
-                self.employees.sort(by: { $0.lname.lowercased() < $1.lname.lowercased() })
-                self.configureTableView()
+                self.employees = self.viewModel.employees
+                self.employees.append(contentsOf: self.viewModel.employees)
+                self.getEmployeesFromTallinn()
             } else {
                 self.showAlert(message: "Task failed successfully")
             }
@@ -38,10 +87,9 @@ class ContactsVC: UIViewController {
     }
     
     func getEmployeesFromTallinn(){
-        apiClient.getEmployees(branch: .tallinn) { success in
+        viewModel.getEmployees(branch: .tallinn) { success in
             if success {
-                self.employees.append(contentsOf: self.apiClient.employees)
-                self.employees.sort(by: { $0.lname.lowercased() < $1.lname.lowercased() })
+                self.employees.append(contentsOf: self.viewModel.employees)
                 self.configureTableView()
             } else {
                 self.showAlert(message: "Task failed successfully")
@@ -56,6 +104,7 @@ class ContactsVC: UIViewController {
            refreshControl.addTarget(self, action: #selector(self.refreshData(_:)), for: .valueChanged)
         tableView.addSubview(refreshControl)
         removeDuplicates()
+        setAllPositions()
         tableView.reloadData()
      }
     
@@ -82,26 +131,66 @@ class ContactsVC: UIViewController {
         let removedDuplicateEmployees =  employees.uniques(by: \.fname, \.lname)
         employees = removedDuplicateEmployees
     }
+    
+    func setAllPositions(){
+        for employe in employees {
+            let position = employe.position
+            if !employeePositions.contains(position) {
+                employeePositions.append(position)
+            }
+        }
+        self.employeePositions.sort(by: { $0.lowercased() < $1.lowercased() })
+        self.employees.sort(by: { $0.position.lowercased() < $1.position.lowercased() })
+        let sortedEmployees = self.employees.sorted {
+            if $0.position == $1.position {
+                return $0.lname < $1.lname
+            }
+            return $0.position < $1.position
+        }
+        self.employees = sortedEmployees
+    }
+
+    
 }
 
 
 extension ContactsVC: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return employees.count
+        return employees.filter{ $0.position.contains(employeePositions[section]) }.count
     }
-
+   
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Identifiers.employeeCell, for: indexPath) as! EmployeeTVCell
-        
-        let fullName = "\(employees[indexPath.row].fname) \(employees[indexPath.row].lname)"
-        let email = employees[indexPath.row].contact_details?.email
-        
+        var index = indexPath.row
+        for i in 0..<indexPath.section { index += self.tableView.numberOfRows(inSection: i) }
+        let fullName = "\(employees[index].fname) \(employees[index].lname)"
+        let email = employees[index].contact_details?.email
         cell.labelFullName.text = fullName
         cell.labelPosition.text = email
-        
         return cell
     }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return employeePositions.count
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = UIView.init(frame: CGRect.init(x: 0, y: 0, width: tableView.frame.width, height: 50))
+        let label = UILabel()
+        label.frame = CGRect.init(x: 20, y: 5, width: headerView.frame.width-10, height: headerView.frame.height-10)
+        label.text = employeePositions[section]
+        label.font = .boldSystemFont(ofSize: 16)
+        label.textColor = #colorLiteral(red: 1, green: 0.8092697859, blue: 0, alpha: 1)
+        headerView.backgroundColor = #colorLiteral(red: 0.1131135939, green: 0.2060283317, blue: 0.2060283317, alpha: 1)
+        headerView.addSubview(label)
+        return headerView
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 50
+    }
+
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 60
@@ -109,7 +198,9 @@ extension ContactsVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: false)
-        selectedEmployee = employees[indexPath.row]
+        var index = indexPath.row
+        for i in 0..<indexPath.section { index += self.tableView.numberOfRows(inSection: i) }
+        selectedEmployee = employees[index]
         performSegue(withIdentifier: Identifiers.employeeDetailSegueId, sender: self)
     }
 
