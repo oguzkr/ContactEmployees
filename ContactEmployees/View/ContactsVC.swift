@@ -28,26 +28,10 @@ class ContactsVC: UIViewController, CNContactViewControllerDelegate {
         showLoader()
     }
     
-    func getContacts(){
-        let contactStore = CNContactStore()
-        let keys = [CNContactGivenNameKey, CNContactFamilyNameKey, CNContactPhoneNumbersKey, CNContactImageDataAvailableKey, CNContactThumbnailImageDataKey]
-        let request = CNContactFetchRequest(keysToFetch: keys as [CNKeyDescriptor])
-        request.sortOrder = CNContactSortOrder.givenName
-            do {
-                try contactStore.enumerateContacts(with: request) {
-                    (contact, stop) in
-                    self.contactHelper.contacts.append(contact)
-                }
-            }
-            catch {
-                print("unable to fetch contacts")
-        }
-    }
-    
     func checkContactPermission(){
         requestAccess()
         if CNContactStore.authorizationStatus(for: .contacts) == .authorized {
-            getContacts()
+            contactHelper.getContacts()
         } else {
             presentSettingsActionSheet()
         }
